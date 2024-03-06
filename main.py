@@ -12,7 +12,7 @@ from openai import OpenAI
 
 
 app = Flask(__name__)
-app.config["MONGO_URI"] = "mongodb+srv://kunal:kunal2425@mongokunal.j1l8ppx.mongodb.net/chatgpt"
+app.config["MONGO_URI"] = process.env.OPEN_API_KEY
 mongo = PyMongo(app)
 
 @app.route("/")
