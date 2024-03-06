@@ -12,7 +12,7 @@ from openai import OpenAI
 
 
 app = Flask(__name__)
-app.config["MONGO_URI"] = process.env.OPEN_API_KEY
+app.config["MONGO_URI"] = process.env.MONGO_URI
 mongo = PyMongo(app)
 
 @app.route("/")
@@ -33,7 +33,7 @@ def qa():
             data = {"question": question, "answer": f"{chat['answer']}"}
             return jsonify(data)
         else:
-            client = OpenAI(api_key = "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")
+            client = OpenAI(api_key = process.env.OPEN_API_KEY)
             completion = client.chat.completions.create(
                 model="gpt-3.5-turbo",
                 messages=[
